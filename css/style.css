@@ -1,0 +1,767 @@
+
+:root {
+    --accent: #8b5a3c;          /* основной цвет (кнопки, акценты) */
+    --accent-dark: #6b4128;     /* тёмный вариант (цены, наведение) */
+    --accent-soft: #f1e6dd;     /* светлый фон (меню, заголовки таблиц) */
+    --accent2: #c28a5a;         /* второй цвет для логотипа */
+    --sale: #d9480f;            /* цвет значка скидки */
+
+    /* цвета баннера: у каждого слайда три цвета градиента */
+    --s1a: #8b5a3c;  --s1b: #b98462;  --s1c: #dcbc9f;
+    --s2a: #5c3a24;  --s2b: #8b5a3c;  --s2c: #c08a5f;
+    --s3a: #3e2a1e;  --s3b: #7a4f35;  --s3c: #b57f55;
+
+    --dark: #2a1f1a;            /* цвет текста */
+    --gray: #8a7f78;            /* серый текст */
+    --bg: #f6f3f0;              /* фон страницы */
+    --border: #e8e0d9;          /* цвет рамок */
+    --radius: 14px;             /* скругление углов */
+}
+
+/* Сброс стандартных отступов браузера */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--dark);
+    background: var(--bg);
+    line-height: 1.45;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Контейнер: центрирует содержимое и ограничивает ширину */
+.container {
+    width: min(1200px, 94%);
+    margin: 0 auto;
+}
+
+
+/* ========== 2. ШАПКА И МЕНЮ ========== */
+
+header {
+    background: #fff;
+    position: sticky;           /* шапка остаётся сверху при прокрутке */
+    top: 0;
+    z-index: 20;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.header-in {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 70px;
+}
+
+/* Логотип */
+.logo {
+    font-size: 1.7rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+
+/* Слово "Lab" с градиентом */
+.logo span {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Строка поиска */
+.search {
+    flex: 1;
+    display: flex;
+    max-width: 560px;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.search input {
+    flex: 1;
+    border: 0;
+    padding: 10px 14px;
+    font-size: 1rem;
+    outline: none;
+    min-width: 0;
+}
+
+.search button {
+    border: 0;
+    background: var(--accent);
+    color: #fff;
+    padding: 0 18px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.search button:hover {
+    background: var(--accent-dark);
+}
+
+/* Меню */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 4px;
+}
+
+nav a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    background: var(--accent-soft);
+}
+
+/* Текущая страница в меню */
+nav a.active {
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+}
+
+/* Кружок со счётчиком (избранное, корзина) */
+.badge {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    padding: 1px 7px;
+    margin-left: 4px;
+}
+
+/* Кнопка-бургер: на компьютере скрыта, на телефоне показывается */
+.burger {
+    display: none;
+    background: none;
+    border: 0;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+
+/* ========== 3. КНОПКИ ========== */
+
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    padding: 11px 22px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: var(--accent-dark);
+}
+
+/* Белая кнопка (на баннере) */
+.btn-white {
+    background: #fff;
+    color: var(--accent-dark);
+}
+
+.btn-white:hover {
+    background: var(--accent-soft);
+}
+
+
+/* ========== 4. БАННЕР (СЛАЙДЕР) ========== */
+
+.slider {
+    position: relative;
+    margin-top: 20px;
+    border-radius: 22px;
+    overflow: hidden;
+    height: 300px;
+}
+
+/* Каждый слайд лежит поверх другого, виден только активный */
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 56px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.6s;
+    overflow: hidden;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Декоративные полупрозрачные круги */
+.slide::before,
+.slide::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.slide::before {
+    width: 340px;
+    height: 340px;
+    right: -60px;
+    top: -90px;
+}
+
+.slide::after {
+    width: 200px;
+    height: 200px;
+    right: 200px;
+    bottom: -110px;
+}
+
+/* Цвета трёх слайдов */
+.s1 { background: linear-gradient(120deg, var(--s1a), var(--s1b) 60%, var(--s1c)); }
+.s2 { background: linear-gradient(120deg, var(--s2a), var(--s2b) 65%, var(--s2c)); }
+.s3 { background: linear-gradient(120deg, var(--s3a), var(--s3b) 55%, var(--s3c)); }
+
+/* Текст на слайде */
+.slide-text {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+}
+
+.slide-text small {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.28);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.slide-text h1 {
+    font-size: 2.4rem;
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.slide-text p {
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+/* Точки переключения слайдов */
+.dots {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 3;
+}
+
+.dots button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 0;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.dots button.active {
+    background: #fff;
+    width: 26px;
+    border-radius: 10px;
+}
+
+
+/* ========== 5. КАТЕГОРИИ (кнопки над каталогом) ========== */
+
+.chips {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 18px 0 4px;
+    scrollbar-width: none;
+}
+
+.chip {
+    flex: none;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 9px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chip:hover {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+}
+
+/* Выбранная категория */
+.chip.on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+
+/* ========== 6. ОБЩИЕ БЛОКИ ========== */
+
+section {
+    padding: 34px 0;
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+/* Строка: заголовок слева, кнопка или список справа */
+.head-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.head-row h2 {
+    margin: 0;
+}
+
+select {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    background: #fff;
+}
+
+/* Блоки преимуществ на главной */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    list-style: none;
+}
+
+.features li {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 22px;
+    border: 1px solid var(--border);
+}
+
+.features b {
+    display: block;
+    color: var(--accent-dark);
+    margin-bottom: 4px;
+}
+
+
+/* ========== 7. КАРТОЧКИ ТОВАРОВ ========== */
+
+/* Сетка: карточки сами перестраиваются по ширине экрана */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+}
+
+/* Карточка приподнимается при наведении */
+.card:hover {
+    box-shadow: 0 10px 26px rgba(107, 65, 40, 0.18);
+    transform: translateY(-3px);
+}
+
+/* Область с фото */
+.thumb {
+    aspect-ratio: 3 / 4;
+    background: #ece6e0;
+    position: relative;
+    overflow: hidden;
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Заглушка, если фото не найдено */
+.thumb.noimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Значок скидки */
+.sale {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background: var(--sale);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 3px 9px;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+/* Кнопка-сердечко */
+.fav {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #fff;
+    border: 0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.15rem;
+    cursor: pointer;
+    color: #c4b8ae;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+/* Товар в избранном */
+.fav.on {
+    color: var(--accent);
+}
+
+/* Текст под фото */
+.card-body {
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--accent-dark);
+}
+
+/* Старая цена зачёркнута */
+.old {
+    color: var(--gray);
+    text-decoration: line-through;
+    font-size: 0.9rem;
+}
+
+.title {
+    font-size: 0.95rem;
+}
+
+.title b {
+    font-weight: 700;
+}
+
+.rating {
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+/* Жёлтая звезда рейтинга */
+.rating i {
+    color: #ffb400;
+    font-style: normal;
+}
+
+.card .btn {
+    margin-top: 8px;
+    padding: 9px;
+    font-size: 0.95rem;
+}
+
+/* Надпись "Ничего не найдено" */
+.empty {
+    color: var(--gray);
+    padding: 30px 0;
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+
+/* ========== 8. КОРЗИНА ========== */
+
+.box {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 8px 18px 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    color: var(--gray);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Маленькое фото товара в корзине */
+.cart-img {
+    width: 64px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #ece6e0;
+}
+
+/* Кнопки + и − */
+.qty button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.qty span {
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Кнопка удаления ✕ */
+.remove {
+    background: none;
+    border: 0;
+    color: var(--accent-dark);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.total {
+    text-align: right;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 18px 0;
+}
+
+/* Прокрутка таблицы на узких экранах */
+.table-wrap {
+    overflow-x: auto;
+}
+
+
+/* ========== 9. КОНТАКТЫ И ФОРМА ========== */
+
+/* Две колонки: контакты слева, форма справа */
+.contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 26px;
+}
+
+.info {
+    list-style: none;
+}
+
+.info li {
+    margin-bottom: 12px;
+}
+
+.panel table th {
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+}
+
+/* Форма обратной связи */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form input,
+.form textarea {
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+/* Подсветка поля при вводе */
+.form input:focus,
+.form textarea:focus {
+    outline: 2px solid var(--accent-soft);
+    border-color: var(--accent);
+}
+
+.form textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* Сообщение под формой: скрыто, пока не появится текст */
+.msg {
+    padding: 12px;
+    border-radius: 10px;
+    display: none;
+}
+
+.msg.ok {
+    display: block;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.msg.err {
+    display: block;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+
+/* ========== 10. ПОДВАЛ ========== */
+
+footer {
+    background: var(--dark);
+    color: #d8cdc4;
+    padding: 28px 0;
+    margin-top: 30px;
+    text-align: center;
+}
+
+footer b {
+    color: #fff;
+}
+
+
+/* ========== 11. АДАПТИВ ДЛЯ ТЕЛЕФОНОВ И ПЛАНШЕТОВ ========== */
+
+/* Планшеты: контакты в одну колонку */
+@media (max-width: 900px) {
+    .contacts {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Телефоны */
+@media (max-width: 768px) {
+    .header-in {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 0;
+        gap: 10px;
+    }
+
+    .burger {
+        display: block;         /* показываем кнопку-бургер */
+    }
+
+    .search {
+        order: 3;
+        flex: 1 1 100%;
+        max-width: none;
+    }
+
+    /* Меню скрыто и открывается по нажатию на бургер */
+    nav {
+        display: none;
+        order: 4;
+        flex: 1 1 100%;
+    }
+
+    nav.open {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    .slider {
+        height: 250px;
+        border-radius: 16px;
+    }
+
+    .slide {
+        padding: 0 24px;
+    }
+
+    .slide-text h1 {
+        font-size: 1.6rem;
+    }
+
+    /* На телефоне по 2 карточки в ряд */
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}

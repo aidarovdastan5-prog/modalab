@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — Moda Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div class="container header-in">
+    <a href="index.html" class="logo">Moda <span>Lab</span></a>
+    <form class="search" id="headSearch">
+      <input type="search" placeholder="Найти одежду, обувь, аксессуары...">
+      <button type="submit" aria-label="Поиск">🔍</button>
+    </form>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+    <nav id="menu">
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="catalog.html">Каталог</a></li>
+        <li><a href="favorites.html">♥ Избранное<span class="badge" id="favBadge">0</span></a></li>
+        <li><a href="cart.html">🛒 Корзина<span class="badge" id="cartBadge">0</span></a></li>
+        <li><a href="contacts.html" class="active">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="container contacts">
+    <div class="panel">
+      <h2>Контакты</h2>
+      <ul class="info">
+        <li>📞 Телефон: <a href="tel:+996555123456"><b>+996 555 123 456</b></a></li>
+        <li>✉️ E-mail: info@modalab.kg</li>
+        <li>📍 Адрес: г. Бишкек, пр. Чуй, 100</li>
+      </ul>
+      <h3 style="margin:18px 0 10px">Режим работы</h3>
+      <table>
+        <tr><th>День</th><th>Часы</th></tr>
+        <tr><td>Пн–Пт</td><td>09:00 – 20:00</td></tr>
+        <tr><td>Суббота</td><td>10:00 – 18:00</td></tr>
+        <tr><td>Воскресенье</td><td>Выходной</td></tr>
+      </table>
+    </div>
+    <div class="panel">
+      <h2>Напишите нам</h2>
+      <form class="form" id="feedback">
+        <input type="text" name="name" placeholder="Ваше имя">
+        <input type="text" name="email" placeholder="E-mail">
+        <textarea name="text" placeholder="Сообщение"></textarea>
+        <button class="btn" type="submit">Отправить</button>
+        <div class="msg" id="formMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container"><b>Moda Lab</b> — интернет-магазин одежды · © 2026 · Бишкек · <a href="tel:+996555123456">+996 555 123 456</a></div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>

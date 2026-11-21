@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная — Moda Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div class="container header-in">
+    <a href="index.html" class="logo">Moda <span>Lab</span></a>
+    <form class="search" id="headSearch">
+      <input type="search" placeholder="Найти одежду, обувь, аксессуары...">
+      <button type="submit" aria-label="Поиск">🔍</button>
+    </form>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+    <nav id="menu">
+      <ul>
+        <li><a href="index.html" class="active">Главная</a></li>
+        <li><a href="catalog.html">Каталог</a></li>
+        <li><a href="favorites.html">♥ Избранное<span class="badge" id="favBadge">0</span></a></li>
+        <li><a href="cart.html">🛒 Корзина<span class="badge" id="cartBadge">0</span></a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="slider">
+    <div class="slide s1"><div class="slide-text"><small>Новая коллекция</small><h1>Осень в стиле Moda Lab</h1><p>Свитшоты, пальто и куртки со скидками до 40%.</p><a class="btn btn-white" href="catalog.html">Смотреть каталог</a></div></div>
+    <div class="slide s2"><div class="slide-text"><small>Распродажа</small><h1>Скидки до −50% на худи и джинсы</h1><p>Успейте купить любимые вещи по выгодной цене.</p><a class="btn btn-white" href="catalog.html">За покупками</a></div></div>
+    <div class="slide s3"><div class="slide-text"><small>Бесплатная доставка</small><h1>Доставим по всему Кыргызстану</h1><p>От 3000 сом — доставка бесплатно.</p><a class="btn btn-white" href="contacts.html">Подробнее</a></div></div>
+    <div class="dots" id="dots"></div>
+  </div>
+</main>
+<section>
+  <div class="container">
+    <div class="head-row"><h2>Хиты продаж</h2><a class="btn" href="catalog.html">Весь каталог</a></div>
+    <div class="grid" id="hits" style="margin-top:14px"></div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <h2>Почему Moda Lab</h2>
+    <ul class="features">
+      <li><b>Быстрая доставка</b>По Бишкеку за 1 день, по стране — до 3 дней.</li>
+      <li><b>Возврат 14 дней</b>Не подошёл размер — обменяем или вернём деньги.</li>
+      <li><b>Честные скидки</b>Актуальные цены и распродажи каждую неделю.</li>
+      <li><b>Удобная оплата</b>Наличными, картой или онлайн.</li>
+    </ul>
+  </div>
+</section>
+<footer>
+  <div class="container"><b>Moda Lab</b> — интернет-магазин одежды · © 2026 · Бишкек · <a href="tel:+996555123456">+996 555 123 456</a></div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог — Moda Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div class="container header-in">
+    <a href="index.html" class="logo">Moda <span>Lab</span></a>
+    <form class="search" id="headSearch">
+      <input type="search" placeholder="Найти одежду, обувь, аксессуары...">
+      <button type="submit" aria-label="Поиск">🔍</button>
+    </form>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+    <nav id="menu">
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="catalog.html" class="active">Каталог</a></li>
+        <li><a href="favorites.html">♥ Избранное<span class="badge" id="favBadge">0</span></a></li>
+        <li><a href="cart.html">🛒 Корзина<span class="badge" id="cartBadge">0</span></a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="head-row">
+      <h2>Каталог <small id="count" style="font-size:.9rem;color:var(--gray);font-weight:400"></small></h2>
+      <select id="sort">
+        <option value="none">По популярности</option>
+        <option value="asc">Сначала дешёвые</option>
+        <option value="desc">Сначала дорогие</option>
+        <option value="rate">По рейтингу</option>
+        <option value="sale">По размеру скидки</option>
+      </select>
+    </div>
+    <input type="hidden" id="search">
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="catalog" style="margin-top:14px"></div>
+  </div>
+</section>
+<footer>
+  <div class="container"><b>Moda Lab</b> — интернет-магазин одежды · © 2026 · Бишкек · <a href="tel:+996555123456">+996 555 123 456</a></div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
